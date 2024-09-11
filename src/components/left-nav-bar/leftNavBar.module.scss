@@ -1,0 +1,32 @@
+.leftNavBar {
+	min-width: 230px;
+	padding-top: 30px;
+	position: relative;
+	background: #444040;
+	&__list {
+		color: #072659;
+		padding-left: 10px;
+	}
+	&__item {
+		padding: 10px;
+		color: #072659;
+		font-size: 16px;
+		&::before {
+			content: '-';
+			margin-right: 4px;
+			color: #072659;
+		}
+	}
+	&__linkActive {
+		color: #072659;
+		text-decoration: underline;
+	}
+	&__linkNoActive {
+		text-decoration: none;
+		color: #072659;
+		&:hover {
+			text-decoration: underline;
+			width: 100%;
+		}
+	}
+}

@@ -1,6 +1,6 @@
 import React from 'react'
 
-function StockInventory() {
+const StockInventory: React.FC = () => {
 	return <div>StockInventory</div>
 }
 
