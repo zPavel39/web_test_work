@@ -9,7 +9,7 @@
 	box-sizing: border-box;
 }
 a {
-	color: black;
+	color: white;
 	text-decoration: none;
 }
 ul,
@@ -42,7 +42,7 @@ body {
 	background: #010409;
 	line-height: 1;
 	font-size: 14px;
-	color: black;
+	color: white;
 	font-weight: 400;
 	font-family: 'Montserrat', sans-serif;
 }
