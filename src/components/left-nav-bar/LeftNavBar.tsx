@@ -2,8 +2,8 @@ import React from 'react'
 import { NavLink } from 'react-router-dom'
 import styles from './leftNavBar.module.scss'
 import CustomSelect from './custon-select/CustomSelect'
-import { useSelector } from 'react-redux'
 import { useActions } from '../../hook/useAction'
+import { useTypeSelector } from '../../hook/useTypeSelector'
 
 interface ILeftNavBarProps {
 	list: {
@@ -12,7 +12,9 @@ interface ILeftNavBarProps {
 	}[]
 }
 export const LeftNavBar: React.FC<ILeftNavBarProps> = ({ list }) => {
-	const { filial, selectFilial } = useSelector((state: any) => state.menuStore)
+	const { filial, selectFilial } = useTypeSelector(
+		(state: any) => state.menuStore
+	)
 	const { changeSelectFilial } = useActions()
 	return (
 		<div className={styles.leftNavBar}>

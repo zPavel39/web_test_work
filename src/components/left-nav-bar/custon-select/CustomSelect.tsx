@@ -2,8 +2,8 @@ import React from 'react'
 import styled from './customSelect.module.scss'
 
 interface CustomSelectProps {
-	setValue: (value: string) => void
-	value: string
+	setValue: (value: number) => void
+	value: number
 	data: { id: string | number; [key: string]: any }[]
 	text?: string
 	dataKey?: string
@@ -34,8 +34,8 @@ const CustomSelect: React.FC<CustomSelectProps> = ({
 			<select
 				id='custom-select'
 				className={styled.customSelectBlock__customSelect}
-				value={value || '0'}
-				onChange={e => setValue(e.target.value)}
+				value={value || 0}
+				onChange={e => setValue(+e.target.value)}
 			>
 				{loading ? (
 					<option
