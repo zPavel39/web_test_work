@@ -16,13 +16,23 @@ const LeftNavBar: React.FC<ILeftNavBarProps> = ({ list }) => {
 		(state: any) => state.menuStore
 	)
 	const { changeSelectFilial } = useActions()
+	const handleSearch = ({
+		value,
+		key,
+	}: {
+		value: number | string
+		key: string
+	}) => {
+		console.log('value', value)
+		changeSelectFilial(Number(value))
+	}
+
 	return (
 		<div className={styles.leftNavBar}>
 			<CustomSelect
 				data={filial}
-				setValue={changeSelectFilial}
-				value={selectFilial}
-				dataKey='name'
+				setValue={({ value, key }) => handleSearch({ value: value, key })}
+				value={filial?.find((el: any) => el.id === selectFilial)?.id || 0}
 				label='Филиал'
 			/>
 			<ul className={styles.leftNavBar__list}>

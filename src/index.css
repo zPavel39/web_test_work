@@ -79,7 +79,7 @@ table {
 	text-indent: initial;
 	border-spacing: 0;
 }
-&::-webkit-scrollbar {
+/* &::-webkit-scrollbar {
 	width: 5px;
 	height: 7px;
 }
@@ -93,4 +93,4 @@ table {
 &::-webkit-scrollbar-thumb {
 	border-radius: 10px;
 	background: #73729f;
-}
+} */

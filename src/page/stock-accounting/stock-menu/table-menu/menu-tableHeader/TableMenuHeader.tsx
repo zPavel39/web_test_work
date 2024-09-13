@@ -3,31 +3,44 @@ import CustomInput from '../../../../../components/custom-Input/CustomInput'
 import CustomSelect from '../../../../../components/custom-select/CustomSelect'
 import { useTypeSelector } from '../../../../../hook/useTypeSelector'
 import styles from './tableMenuHeader.module.scss'
+import { useActions } from '../../../../../hook/useAction'
+import { iGetMenuParams } from '../../../../../store/menu-store/iMenu'
 
 const TableMenuHeader: React.FC = () => {
-	const { menuColumnsHeader } = useTypeSelector(state => state.menuStore)
-	const [value, setValue] = React.useState<string | number>(0)
+	const { menuColumnsHeader, filterForm } = useTypeSelector(
+		state => state.menuStore
+	)
+	const { changeFilterForm } = useActions()
 
-	const handleSelect = (item: number | string) => {
-		setValue(item)
+	const handleSearch = ({ value, key }: { value: string; key: string }) => {
+		changeFilterForm({ value: value, key: key as keyof iGetMenuParams })
 	}
 
+	console.log('filterForm', filterForm)
 	return (
 		<thead>
 			<tr className={styles.tableMenuHeader}>
 				{menuColumnsHeader.map((i, key) => (
 					<th className={styles.tableMenuHeader__cell} key={i.id}>
 						{i.type === 'select' ? (
-							<CustomSelect
-								setValue={handleSelect}
-								value={key}
-								data={i.options ?? []}
-								colorText='placeholder'
-							/>
+							<>
+								<CustomSelect
+									setValue={({ value, key }) =>
+										handleSearch({ value: value.toString(), key })
+									}
+									fieldKey={i.field}
+									value={(filterForm.active as string) ?? 0}
+									data={i.options ?? []}
+									colorText='placeholder'
+								/>
+							</>
 						) : i.type === 'search' ? (
 							<CustomInput
-								value={value}
-								setValue={setValue}
+								value={
+									filterForm[i.field as keyof iGetMenuParams]?.toString() ?? ''
+								}
+								fieldKey={i.field}
+								setValue={({ value, key }) => handleSearch({ value, key })}
 								placeholder={i.name}
 							/>
 						) : (

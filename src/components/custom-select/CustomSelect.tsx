@@ -2,7 +2,7 @@ import React from 'react'
 import styles from './customSelect.module.scss'
 
 interface CustomSelectProps {
-	setValue: (value: number) => void
+	setValue: ({ value, key }: { value: number | string; key: string }) => void
 	value: number | string
 	data: Array<{ id: string | number; [key: string]: any }> | string[]
 	text?: string
@@ -11,6 +11,7 @@ interface CustomSelectProps {
 	loading?: boolean
 	classNameSelect?: string
 	colorText?: string
+	fieldKey?: string
 }
 
 const CustomSelect: React.FC<CustomSelectProps> = ({
@@ -22,12 +23,18 @@ const CustomSelect: React.FC<CustomSelectProps> = ({
 	label = '',
 	loading = false,
 	colorText = '',
+	fieldKey = 'name',
 }) => {
+	console.log('value', value)
 	// является ли элемент объектом
 	const isObjectArray = (
 		item: any
 	): item is { id: string | number; [key: string]: any } =>
 		typeof item === 'object' && 'id' in item
+
+	const handleChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
+		setValue({ value: e.target.value, key: fieldKey }) // Передаем ключ и значение
+	}
 
 	return (
 		<div className={styles.customSelectBlock}>
@@ -45,7 +52,7 @@ const CustomSelect: React.FC<CustomSelectProps> = ({
 					colorText ? styles.customSelectBlock__colorPlaceholder : ''
 				}`}
 				value={value || 0}
-				onChange={e => setValue(+e.target.value)}
+				onChange={handleChange}
 			>
 				{loading ? (
 					<option disabled className={styles.customSelectBlock__selectOption}>

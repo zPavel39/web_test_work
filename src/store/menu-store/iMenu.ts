@@ -1,10 +1,10 @@
 export interface iGetMenuParams {
-	limit: number
 	page: number
+	limit: number
 	name?: string
 	filial?: string
 	tt?: string
-	active?: 'active' | 'no_active'
+	active?: 'active' | 'no_active' | 'all'
 }
 export interface iRoot {
 	max_pages: number
