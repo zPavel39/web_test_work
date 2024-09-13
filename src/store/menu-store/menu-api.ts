@@ -1,33 +1,18 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react'
-import { iGetMenuParams, iRoot } from './Imenu'
+import { iGetMenuParams, iRoot } from './iMenu'
 
 export const menuApi = createApi({
 	reducerPath: 'menuApi',
 	baseQuery: fetchBaseQuery({
-		baseUrl: 'https://testjob.checkport.ru/filial/', // Базовый URL
+		baseUrl: 'https://testjob.checkport.ru/filial/',
 	}),
 	endpoints: build => ({
-		// Запрос меню по ID филиала
+		// Запрос меню по id филиала
 		getMenu: build.query<iRoot, string | number>({
-			query: filial => `${filial}/menu/`,
-		}),
-		// Запрос с фильтрацией
-		getFilterMenu: build.query<iRoot, iGetMenuParams>({
-			query: ({ limit, page, name, filial, tt, active }) => {
-				const params = new URLSearchParams()
-
-				params.set('limit', limit.toString())
-				params.set('page', page.toString())
-				if (name) params.set('name', name)
-				if (filial) params.set('filial', filial)
-				if (tt) params.set('tt', tt)
-				if (active) params.set('active', active)
-
-				return `menu/?${params.toString()}`
-			},
+			query: filial => `${filial}/menu/?limit=10`,
 		}),
 	}),
 })
 
 // Экспортируем хуки для запросов
-export const { useGetMenuQuery, useGetFilterMenuQuery } = menuApi
+export const { useGetMenuQuery } = menuApi

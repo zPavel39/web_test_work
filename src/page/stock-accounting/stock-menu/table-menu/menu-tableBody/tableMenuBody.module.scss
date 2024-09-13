@@ -1,0 +1,23 @@
+.tableMenuBody {
+	&__cell {
+		padding: 5px 15px;
+		min-width: 150px;
+		max-width: 170px;
+	}
+	&__cellIcon {
+		padding: 5px 15px;
+		width: 100%;
+	}
+	&__iconBlock {
+		height: 30px;
+		width: 100%;
+		display: flex;
+		gap: 5px;
+		justify-content: flex-end;
+		align-items: center;
+	}
+	&__icon {
+		background: inherit;
+		cursor: pointer;
+	}
+}

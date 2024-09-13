@@ -39,10 +39,10 @@ h6 {
 html,
 body {
 	height: 100%;
-	background: #010409;
+	background: rgb(95, 95, 95);
 	line-height: 1;
 	font-size: 14px;
-	color: white;
+	color: #072659;
 	font-weight: 400;
 	font-family: 'Montserrat', sans-serif;
 }
@@ -69,4 +69,28 @@ button {
 }
 input {
 	outline: none;
+}
+th,
+td {
+	padding: 0;
+}
+table {
+	border-collapse: separate;
+	text-indent: initial;
+	border-spacing: 0;
+}
+&::-webkit-scrollbar {
+	width: 5px;
+	height: 7px;
+}
+
+&::-webkit-scrollbar-track {
+	-webkit-box-shadow: 5px 5px 5px -5px rgba(34, 60, 80, 0.2) inset;
+	background-color: #0505e2;
+	border-radius: 10px;
+}
+
+&::-webkit-scrollbar-thumb {
+	border-radius: 10px;
+	background: #73729f;
 }

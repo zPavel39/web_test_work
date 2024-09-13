@@ -1,0 +1,28 @@
+.customInput {
+	display: flex;
+	flex-direction: column;
+	padding: 5px 10px;
+	gap: 5px;
+	&__label {
+		color: #657a9d;
+		font-size: 16px;
+	}
+	&__input {
+		background: inherit;
+		width: 100%;
+		border: none;
+		padding: 6px;
+		font-size: 16px;
+		color: #072659;
+		cursor: pointer;
+		border-radius: 5px;
+		border: 1px solid #072659;
+
+		&::placeholder {
+			color: #657a9d;
+		}
+		&:focus {
+			outline: none;
+		}
+	}
+}

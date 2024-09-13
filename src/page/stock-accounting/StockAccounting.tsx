@@ -1,15 +1,15 @@
 import React, { useEffect } from 'react'
-import { LeftNavBar } from '../../components/left-nav-bar/LeftNavBar'
+import LeftNavBar from '../../components/left-nav-bar/LeftNavBar'
 import { Outlet } from 'react-router-dom'
 import { ILink } from './IStockAccounting'
-import styled from './stockAccounting.module.scss'
 import { useGetFilialQuery } from '../../store/filial-store/filial-api'
 import { useActions } from '../../hook/useAction'
+import styled from './stockAccounting.module.scss'
 
 const linkList: ILink[] = [
 	{
-		name: 'Филиалы',
-		link: 'stock-filial',
+		name: 'Меню',
+		link: 'stock-menu',
 	},
 	{
 		name: 'Накладные',
@@ -34,8 +34,6 @@ const StockAccounting: React.FC = () => {
 			setFilial(data)
 		}
 	}, [data])
-
-	console.log(data)
 
 	return (
 		<div className={styled.stockAccounting}>

@@ -1,9 +1,9 @@
 import React from 'react'
 import { NavLink } from 'react-router-dom'
-import styles from './leftNavBar.module.scss'
-import CustomSelect from './custon-select/CustomSelect'
 import { useActions } from '../../hook/useAction'
 import { useTypeSelector } from '../../hook/useTypeSelector'
+import CustomSelect from '../custom-select/CustomSelect'
+import styles from './leftNavBar.module.scss'
 
 interface ILeftNavBarProps {
 	list: {
@@ -11,7 +11,7 @@ interface ILeftNavBarProps {
 		link: string
 	}[]
 }
-export const LeftNavBar: React.FC<ILeftNavBarProps> = ({ list }) => {
+const LeftNavBar: React.FC<ILeftNavBarProps> = ({ list }) => {
 	const { filial, selectFilial } = useTypeSelector(
 		(state: any) => state.menuStore
 	)
@@ -47,3 +47,5 @@ export const LeftNavBar: React.FC<ILeftNavBarProps> = ({ list }) => {
 		</div>
 	)
 }
+
+export default LeftNavBar

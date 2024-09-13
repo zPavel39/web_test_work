@@ -1,0 +1,17 @@
+.tableMenuHeader {
+	width: 100%;
+	&__cell {
+		min-width: 170px;
+		border-bottom: 1px solid #072659;
+	}
+	&__lastCell {
+		border-bottom: 1px solid #072659;
+		min-width: 100px;
+		width: 100%;
+	}
+	&__title {
+		display: inline-block;
+		color: #657a9d;
+		padding: 5px 10px;
+	}
+}

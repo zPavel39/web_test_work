@@ -29,3 +29,12 @@ export interface iPoint {
 	id: number
 	name: string
 }
+
+// колонки таблицы меню
+export interface IMenuColumnHeader {
+	id: number
+	name: string
+	field: 'name' | 'filial' | 'tt' | 'active' | 'export'
+	type: 'search' | 'select' | 'text'
+	options?: string[]
+}

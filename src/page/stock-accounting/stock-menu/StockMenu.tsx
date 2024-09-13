@@ -1,10 +1,11 @@
 import React, { useEffect } from 'react'
-import styles from './stockFilial.module.scss'
+import styles from './stockMenu.module.scss'
 import { useGetMenuQuery } from '../../../store/menu-store/menu-api'
 import { useActions } from '../../../hook/useAction'
 import { useTypeSelector } from '../../../hook/useTypeSelector'
+import TableMenu from './table-menu/TableMenu'
 
-const StockFilial: React.FC = () => {
+const StockMenu: React.FC = () => {
 	const { selectFilial, menu } = useTypeSelector(state => state.menuStore)
 	const { setMenu } = useActions()
 
@@ -19,14 +20,10 @@ const StockFilial: React.FC = () => {
 	}, [data, setMenu])
 
 	return (
-		<div className={styles.stockFilial}>
-			{menu?.map(i => (
-				<div key={i.id}>
-					<h3>{i.name}</h3>
-				</div>
-			))}
+		<div className={styles.stockMenu}>
+			<TableMenu />
 		</div>
 	)
 }
 
-export default StockFilial
+export default StockMenu
