@@ -39,12 +39,12 @@ h6 {
 html,
 body {
 	height: 100%;
-	background: rgb(95, 95, 95);
+	background: white;
 	line-height: 1;
 	font-size: 14px;
 	color: #072659;
 	font-weight: 400;
-	font-family: 'Montserrat', sans-serif;
+	font-family: 'Roboto', sans-serif;
 }
 p,
 h1 {

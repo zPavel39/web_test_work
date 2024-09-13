@@ -36,5 +36,16 @@ export interface IMenuColumnHeader {
 	name: string
 	field: 'name' | 'filial' | 'tt' | 'active' | 'export'
 	type: 'search' | 'select' | 'text'
-	options?: string[]
+	options?: iOptionsActive[]
+}
+
+export interface iOptionsActive {
+	id: number
+	name: string
+	key: 'active' | 'no_active' | 'all'
+}
+export interface iPaginationSettings {
+	page: number
+	limit: number
+	total: number
 }

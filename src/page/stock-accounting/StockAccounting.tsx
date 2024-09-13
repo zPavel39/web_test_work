@@ -28,7 +28,7 @@ const linkList: ILink[] = [
 const StockAccounting: React.FC = () => {
 	const { data, isLoading, error } = useGetFilialQuery()
 	const { setFilial } = useActions()
-
+	console.log(data)
 	useEffect(() => {
 		if (data) {
 			setFilial(data)

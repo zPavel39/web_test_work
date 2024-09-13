@@ -77,7 +77,7 @@ const CustomSelect: React.FC<CustomSelectProps> = ({
 								<option
 									key={item.id}
 									className={styles.customSelectBlock__selectOption}
-									value={item.id}
+									value={item.key ? item.key : item.id}
 								>
 									{item[dataKey]}
 								</option>

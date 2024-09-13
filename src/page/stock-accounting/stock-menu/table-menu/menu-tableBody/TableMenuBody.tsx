@@ -1,7 +1,7 @@
 import React from 'react'
 import { useTypeSelector } from '../../../../../hook/useTypeSelector'
 import styles from './tableMenuBody.module.scss'
-import abaliticIcon from '../../../../../assets/svg/analitic-icon.svg'
+import analyticIcon from '../../../../../assets/svg/analytic-icon.svg'
 import penIcon from '../../../../../assets/svg/pen-icon.svg'
 import basketIcon from '../../../../../assets/svg/basket-icon.svg'
 
@@ -19,7 +19,11 @@ const TableMenuBody: React.FC = () => {
 					</td>
 					<td className={styles.tableMenuBody__cell}>
 						{i.export.length > 1 ? (
-							i.export.map((item, index) => <tr key={index}>{item}</tr>)
+							i.export.map((item, index) => (
+								<div style={{ paddingBottom: '5px' }} key={index}>
+									{item}
+								</div>
+							))
 						) : (
 							<span>{i.export[0]}</span>
 						)}
@@ -27,8 +31,8 @@ const TableMenuBody: React.FC = () => {
 					<td className={styles.tableMenuBody__cellIcon}>
 						<div className={styles.tableMenuBody__iconBlock}>
 							<img
-								src={abaliticIcon}
-								alt='analitic-icon'
+								src={analyticIcon}
+								alt='analytic-icon'
 								className={styles.tableMenuBody__icon}
 							/>
 							<img

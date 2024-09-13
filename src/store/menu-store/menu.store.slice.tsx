@@ -1,9 +1,18 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 import { IFilialType } from '../filial-store/iFilial'
-import { iGetMenuParams, iItemMenu, IMenuColumnHeader } from './iMenu'
+import {
+	iGetMenuParams,
+	iItemMenu,
+	IMenuColumnHeader,
+	iPaginationSettings,
+} from './iMenu'
 
 interface FilterFormUpdatePayload {
 	key: keyof iGetMenuParams
+	value: any
+}
+interface PaginationUpdatePayload {
+	key: keyof iPaginationSettings
 	value: any
 }
 export interface MenuStoreState {
@@ -14,6 +23,7 @@ export interface MenuStoreState {
 	// 5 меню филиал точка активно экспорт
 	menuColumnsHeader: IMenuColumnHeader[]
 	filterForm: iGetMenuParams
+	paginationSettings: iPaginationSettings
 }
 const initialState: MenuStoreState = {
 	filial: [],
@@ -50,7 +60,11 @@ const initialState: MenuStoreState = {
 			name: 'Активно',
 			field: 'active',
 			type: 'select',
-			options: ['Все', 'Активно', 'Не активно'],
+			options: [
+				{ id: 1, name: 'Все', key: 'all' },
+				{ id: 2, name: 'Активно', key: 'active' },
+				{ id: 3, name: 'Не активно', key: 'no_active' },
+			],
 		},
 		{
 			id: 5,
@@ -67,6 +81,11 @@ const initialState: MenuStoreState = {
 		filial: '',
 		tt: '',
 		active: 'all',
+	},
+	paginationSettings: {
+		limit: 2,
+		page: 1,
+		total: 0,
 	},
 }
 
@@ -86,13 +105,37 @@ export const menuStoreSlice = createSlice({
 		setMenu: (state, action: PayloadAction<iItemMenu[]>) => {
 			state.menu = action.payload
 		},
-		// измение параметров фильтрации
+		// изменение параметров фильтрации
 		changeFilterForm: (
 			state,
 			action: PayloadAction<FilterFormUpdatePayload>
 		) => {
 			const { key, value } = action.payload
-			state.filterForm = { ...state.filterForm, [key]: value }
+
+			// Обработка значения для поля 'active'
+			let processedValue = value
+			if (key === 'active') {
+				if (value === 'Активно') {
+					processedValue = 'active'
+				} else if (value === 'Не активно') {
+					processedValue = 'no_active'
+				} else if (value === 'Все') {
+					processedValue = '' // Пустая строка
+				}
+			}
+
+			// Обновление состояния
+			state.filterForm = { ...state.filterForm, [key]: processedValue }
+		},
+		// изменяем настройки пагинации
+		changePaginationSettings: (
+			state,
+			action: PayloadAction<PaginationUpdatePayload>
+		) => {
+			const { key, value } = action.payload
+			if (key === 'page') {
+				state.paginationSettings.total = value
+			}
 		},
 	},
 })
