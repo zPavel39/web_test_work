@@ -1,0 +1,39 @@
+.cardProfile {
+	display: flex;
+	justify-content: space-between;
+	flex-direction: column;
+	padding: 5px;
+	box-shadow: 0px 4px 4px 0px #00000040;
+	&__card {
+		display: flex;
+		justify-content: space-between;
+	}
+	&__profile {
+		display: flex;
+		align-items: center;
+		justify-content: space-around;
+		gap: 10px;
+		padding-bottom: 5px;
+
+		border-bottom: 1px solid #072659;
+	}
+	&__section {
+		display: flex;
+		align-items: center;
+		justify-content: space-around;
+
+		gap: 10px;
+	}
+	&__profileInfo {
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		gap: 5px;
+		&__name {
+			color: #657a9d;
+		}
+	}
+	&__section__title {
+		color: #657a9d;
+	}
+}

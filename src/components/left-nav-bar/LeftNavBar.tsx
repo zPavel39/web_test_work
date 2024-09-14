@@ -4,6 +4,7 @@ import { useActions } from '../../hook/useAction'
 import { useTypeSelector } from '../../hook/useTypeSelector'
 import CustomSelect from '../UI/custom-select/CustomSelect'
 import styles from './leftNavBar.module.scss'
+import CardProfile from '../card-profile/CardProfile'
 
 interface ILeftNavBarProps {
 	list: {
@@ -30,6 +31,7 @@ const LeftNavBar: React.FC<ILeftNavBarProps> = ({ list }) => {
 
 	return (
 		<div className={styles.leftNavBar}>
+			<CardProfile />
 			<CustomSelect
 				data={filial}
 				setValue={({ value, key }) => handleSearch({ value: value, key })}

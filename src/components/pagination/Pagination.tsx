@@ -1,8 +1,8 @@
 import React from 'react'
 import { useTypeSelector } from '../../hook/useTypeSelector'
 import { useActions } from '../../hook/useAction'
-import ArrowLeft from '../../assets/arrow-left.svg'
-import ArrowRight from '../../assets/arrow-right.svg'
+import ArrowLeft from './../../assets/svg/arrow-left.svg'
+import ArrowRight from './../../assets/svg/arrow-right.svg'
 import styles from './pagination.module.scss'
 
 const Pagination: React.FC = () => {
