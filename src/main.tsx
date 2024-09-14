@@ -16,10 +16,10 @@ createRoot(document.getElementById('root')!).render(
 		<BrowserRouter>
 			<Routes>
 				<Route path='/' element={<App />}>
-					<Route path='/stock-accounting' element={<StockAccounting />}>
+					<Route path='stock-accounting' element={<StockAccounting />}>
 						<Route path='stock-invoices' element={<StockInvoices />} />
 						<Route path='stock-components' element={<StockComponents />} />
-						<Route index path='stock-menu' element={<StockMenu />} />
+						<Route path='stock-menu' element={<StockMenu />} />
 						<Route path='stock-inventory' element={<StockInventory />} />
 					</Route>
 				</Route>

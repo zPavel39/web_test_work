@@ -5,7 +5,7 @@ import './App.css'
 function App() {
 	const navigate = useNavigate()
 	useEffect(() => {
-		navigate('/stock-accounting')
+		navigate('/stock-accounting/stock-menu')
 	}, [])
 	return (
 		<>
