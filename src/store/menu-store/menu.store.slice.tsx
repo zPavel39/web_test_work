@@ -1,32 +1,32 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
-import { IFilialType } from '../filial-store/iFilial'
+import { iFilialType } from '../filial-store/iFilial'
 import {
 	iGetMenuParams,
 	iItemMenu,
-	IMenuColumnHeader,
+	iMenuColumnHeader,
 	iPaginationSettings,
 } from './iMenu'
 
-interface FilterFormUpdatePayload {
+interface iFilterFormUpdatePayload {
 	key: keyof iGetMenuParams
 	value: any
 }
-interface PaginationUpdatePayload {
+interface iPaginationUpdatePayload {
 	key: keyof iPaginationSettings
 	value: any
 }
-export interface MenuStoreState {
-	filial: IFilialType[]
+export interface iMenuStoreState {
+	filial: iFilialType[]
 	selectFilial: number
 	formGetMenu: iGetMenuParams
 	menu: iItemMenu[]
-	menuColumnsHeader: IMenuColumnHeader[]
+	menuColumnsHeader: iMenuColumnHeader[]
 	filterForm: iGetMenuParams
 	paginationSettings: iPaginationSettings
 	massage: string
 	error: boolean
 }
-const initialState: MenuStoreState = {
+const initialState: iMenuStoreState = {
 	filial: [],
 	selectFilial: 0,
 	formGetMenu: {
@@ -76,7 +76,7 @@ const initialState: MenuStoreState = {
 	],
 	menu: [],
 	filterForm: {
-		limit: 10,
+		limit: 2,
 		page: 1,
 		name: '',
 		filial: '',
@@ -96,7 +96,7 @@ export const menuStoreSlice = createSlice({
 	initialState,
 	reducers: {
 		// записываем филиалы
-		setFilial: (state, action: PayloadAction<IFilialType[]>) => {
+		setFilial: (state, action: PayloadAction<iFilialType[]>) => {
 			state.filial = action.payload
 		},
 		// выбираем филиал и сбрасываем параметры страницы пагинации
@@ -116,7 +116,7 @@ export const menuStoreSlice = createSlice({
 		// изменение параметров фильтрации
 		changeFilterForm: (
 			state,
-			action: PayloadAction<FilterFormUpdatePayload>
+			action: PayloadAction<iFilterFormUpdatePayload>
 		) => {
 			const { key, value } = action.payload
 
@@ -136,7 +136,7 @@ export const menuStoreSlice = createSlice({
 		// изменяем настройки пагинации
 		changePaginationSettings: (
 			state,
-			action: PayloadAction<PaginationUpdatePayload>
+			action: PayloadAction<iPaginationUpdatePayload>
 		) => {
 			const { key, value } = action.payload
 			if (key === 'total') {

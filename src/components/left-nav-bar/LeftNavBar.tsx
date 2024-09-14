@@ -19,13 +19,7 @@ const LeftNavBar: React.FC<ILeftNavBarProps> = ({ list }) => {
 	)
 	const { changeSelectFilial } = useActions()
 
-	const handleSearch = ({
-		value,
-		key,
-	}: {
-		value: number | string
-		key: string
-	}) => {
+	const handleSearch = ({ value }: { value: number | string; key: string }) => {
 		changeSelectFilial(Number(value))
 	}
 

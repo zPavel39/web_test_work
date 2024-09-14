@@ -5,7 +5,6 @@ import { ILink } from './IStockAccounting'
 import { useGetFilialQuery } from '../../store/filial-store/filial-api'
 import { useActions } from '../../hook/useAction'
 import styled from './stockAccounting.module.scss'
-import { useTypeSelector } from '../../hook/useTypeSelector'
 
 const linkList: ILink[] = [
 	{

@@ -1,4 +1,4 @@
-export interface IFilialType {
+export interface iFilialType {
 	id: number
 	name: string
 }

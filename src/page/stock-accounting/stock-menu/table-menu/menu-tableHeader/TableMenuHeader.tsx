@@ -19,7 +19,7 @@ const TableMenuHeader: React.FC = () => {
 	return (
 		<thead>
 			<tr className={styles.tableMenuHeader}>
-				{menuColumnsHeader.map((i, key) => (
+				{menuColumnsHeader.map(i => (
 					<th className={styles.tableMenuHeader__cell} key={i.id}>
 						{i.type === 'select' ? (
 							<>

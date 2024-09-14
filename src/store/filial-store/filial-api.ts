@@ -1,5 +1,5 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react'
-import { IFilialType } from './iFilial'
+import { iFilialType } from './iFilial'
 
 export const filialApi = createApi({
 	reducerPath: 'filialApi',
@@ -7,7 +7,7 @@ export const filialApi = createApi({
 		baseUrl: 'https://testjob.checkport.ru/',
 	}),
 	endpoints: build => ({
-		getFilial: build.query<IFilialType[], void>({
+		getFilial: build.query<iFilialType[], void>({
 			query: () => 'filial/',
 		}),
 	}),

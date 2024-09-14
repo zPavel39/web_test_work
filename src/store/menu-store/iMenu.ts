@@ -31,7 +31,7 @@ export interface iPoint {
 	name: string
 }
 
-export interface IMenuColumnHeader {
+export interface iMenuColumnHeader {
 	id: number
 	name: string
 	field: 'name' | 'filial' | 'tt' | 'active' | 'export'
