@@ -1,7 +1,7 @@
 import React from 'react'
 import styles from './customSelect.module.scss'
 
-interface CustomSelectProps {
+interface iCustomSelectProps {
 	setValue: ({ value, key }: { value: number | string; key: string }) => void
 	value: number | string
 	data: Array<{ id: string | number; [key: string]: any }> | string[]
@@ -14,7 +14,7 @@ interface CustomSelectProps {
 	fieldKey?: string
 }
 
-const CustomSelect: React.FC<CustomSelectProps> = ({
+const CustomSelect: React.FC<iCustomSelectProps> = ({
 	setValue,
 	value,
 	data = [],

@@ -5,9 +5,10 @@ import { useActions } from '../../../hook/useAction'
 import { useTypeSelector } from '../../../hook/useTypeSelector'
 import TableMenu from './table-menu/TableMenu'
 import Pagination from '../../../components/pagination/Pagination'
+import ToastMassage from '../../../components/UI/toast-massage/ToastMassage'
 
 const StockMenu: React.FC = () => {
-	const { selectFilial, paginationSettings, filterForm, massage } =
+	const { selectFilial, paginationSettings, filterForm, massage, menu } =
 		useTypeSelector(state => state.menuStore)
 	const { setMenu, changePaginationSettings, changeMassage } = useActions()
 
@@ -41,6 +42,8 @@ const StockMenu: React.FC = () => {
 	return (
 		<div className={styles.stockMenu}>
 			<TableMenu />
+			{menu.length === 0 && <ToastMassage massage={massage} />}
+
 			{paginationSettings.total > 1 && <Pagination />}
 		</div>
 	)

@@ -2,7 +2,7 @@ import React from 'react'
 import { NavLink } from 'react-router-dom'
 import { useActions } from '../../hook/useAction'
 import { useTypeSelector } from '../../hook/useTypeSelector'
-import CustomSelect from '../custom-select/CustomSelect'
+import CustomSelect from '../UI/custom-select/CustomSelect'
 import styles from './leftNavBar.module.scss'
 
 interface ILeftNavBarProps {

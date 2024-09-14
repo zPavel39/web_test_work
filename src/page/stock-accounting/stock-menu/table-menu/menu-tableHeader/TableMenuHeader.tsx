@@ -1,10 +1,10 @@
 import React from 'react'
-import CustomInput from '../../../../../components/custom-Input/CustomInput'
-import CustomSelect from '../../../../../components/custom-select/CustomSelect'
-import { useTypeSelector } from '../../../../../hook/useTypeSelector'
-import styles from './tableMenuHeader.module.scss'
+import CustomInput from '../../../../../components/UI/custom-Input/CustomInput'
+import CustomSelect from '../../../../../components/UI/custom-select/CustomSelect'
 import { useActions } from '../../../../../hook/useAction'
+import { useTypeSelector } from '../../../../../hook/useTypeSelector'
 import { iGetMenuParams } from '../../../../../store/menu-store/iMenu'
+import styles from './tableMenuHeader.module.scss'
 
 const TableMenuHeader: React.FC = () => {
 	const { menuColumnsHeader, filterForm } = useTypeSelector(
