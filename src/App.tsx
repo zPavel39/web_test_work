@@ -1,6 +1,6 @@
 import { useEffect } from 'react'
-import './App.css'
 import { Outlet, useNavigate } from 'react-router-dom'
+import './App.css'
 
 function App() {
 	const navigate = useNavigate()

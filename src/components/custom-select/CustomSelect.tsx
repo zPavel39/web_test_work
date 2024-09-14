@@ -25,7 +25,6 @@ const CustomSelect: React.FC<CustomSelectProps> = ({
 	colorText = '',
 	fieldKey = 'name',
 }) => {
-	console.log('value', value)
 	// является ли элемент объектом
 	const isObjectArray = (
 		item: any
@@ -33,7 +32,7 @@ const CustomSelect: React.FC<CustomSelectProps> = ({
 		typeof item === 'object' && 'id' in item
 
 	const handleChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
-		setValue({ value: e.target.value, key: fieldKey }) // Передаем ключ и значение
+		setValue({ value: e.target.value, key: fieldKey })
 	}
 
 	return (

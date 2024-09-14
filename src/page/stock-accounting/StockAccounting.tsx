@@ -5,6 +5,7 @@ import { ILink } from './IStockAccounting'
 import { useGetFilialQuery } from '../../store/filial-store/filial-api'
 import { useActions } from '../../hook/useAction'
 import styled from './stockAccounting.module.scss'
+import { useTypeSelector } from '../../hook/useTypeSelector'
 
 const linkList: ILink[] = [
 	{
@@ -26,11 +27,14 @@ const linkList: ILink[] = [
 ]
 
 const StockAccounting: React.FC = () => {
-	const { data, isLoading, error } = useGetFilialQuery()
-	const { setFilial } = useActions()
-	console.log(data)
+	const { data, isError } = useGetFilialQuery()
+	const { setFilial, changeMassage } = useActions()
+
 	useEffect(() => {
-		if (data) {
+		if (isError) {
+			changeMassage('Произошла ошибка при загрузке данных')
+			setFilial([])
+		} else if (data) {
 			setFilial(data)
 		}
 	}, [data])

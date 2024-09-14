@@ -1,0 +1,30 @@
+.pagination {
+	display: flex;
+	align-items: center;
+	gap: 10px;
+
+	&__btn {
+		cursor: pointer;
+		background: inherit;
+		padding: 5px 8px;
+
+		&:hover {
+			box-shadow: 0px 4px 4px 0px #00000040;
+			border-radius: 5px;
+		}
+	}
+	&__btnImg {
+		background: inherit;
+		cursor: pointer;
+		transition: all 0.4;
+
+		&:hover {
+			scale: 1.1;
+		}
+	}
+
+	&__btnActive {
+		box-shadow: 0px 4px 4px 0px #00000040;
+		border-radius: 5px;
+	}
+}

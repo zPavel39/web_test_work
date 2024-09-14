@@ -20,10 +20,11 @@ export interface MenuStoreState {
 	selectFilial: number
 	formGetMenu: iGetMenuParams
 	menu: iItemMenu[]
-	// 5 меню филиал точка активно экспорт
 	menuColumnsHeader: IMenuColumnHeader[]
 	filterForm: iGetMenuParams
 	paginationSettings: iPaginationSettings
+	massage: string
+	error: boolean
 }
 const initialState: MenuStoreState = {
 	filial: [],
@@ -83,10 +84,11 @@ const initialState: MenuStoreState = {
 		active: 'all',
 	},
 	paginationSettings: {
-		limit: 2,
 		page: 1,
 		total: 0,
 	},
+	massage: '',
+	error: false,
 }
 
 export const menuStoreSlice = createSlice({
@@ -97,13 +99,19 @@ export const menuStoreSlice = createSlice({
 		setFilial: (state, action: PayloadAction<IFilialType[]>) => {
 			state.filial = action.payload
 		},
-		// выбираем филиал
+		// выбираем филиал и сбрасываем параметры страницы пагинации
 		changeSelectFilial: (state, action: PayloadAction<number>) => {
 			state.selectFilial = action.payload
+			state.paginationSettings.page = 1
+			state.filterForm.page = 1
 		},
 		// записываем данные меню
 		setMenu: (state, action: PayloadAction<iItemMenu[]>) => {
-			state.menu = action.payload
+			if (action.payload.length > 0) {
+				state.menu = action.payload
+			} else if (action.payload.length === 0) {
+				state.menu = []
+			}
 		},
 		// изменение параметров фильтрации
 		changeFilterForm: (
@@ -112,19 +120,17 @@ export const menuStoreSlice = createSlice({
 		) => {
 			const { key, value } = action.payload
 
-			// Обработка значения для поля 'active'
 			let processedValue = value
+
 			if (key === 'active') {
 				if (value === 'Активно') {
 					processedValue = 'active'
 				} else if (value === 'Не активно') {
 					processedValue = 'no_active'
 				} else if (value === 'Все') {
-					processedValue = '' // Пустая строка
+					processedValue = ''
 				}
 			}
-
-			// Обновление состояния
 			state.filterForm = { ...state.filterForm, [key]: processedValue }
 		},
 		// изменяем настройки пагинации
@@ -133,9 +139,16 @@ export const menuStoreSlice = createSlice({
 			action: PayloadAction<PaginationUpdatePayload>
 		) => {
 			const { key, value } = action.payload
-			if (key === 'page') {
+			if (key === 'total') {
 				state.paginationSettings.total = value
 			}
+			if (key === 'page') {
+				state.paginationSettings.page = value
+				state.filterForm.page = value
+			}
+		},
+		changeMassage: (state, action: PayloadAction<string>) => {
+			state.massage = action.payload
 		},
 	},
 })

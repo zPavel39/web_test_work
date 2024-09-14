@@ -11,11 +11,13 @@ interface ILeftNavBarProps {
 		link: string
 	}[]
 }
+
 const LeftNavBar: React.FC<ILeftNavBarProps> = ({ list }) => {
 	const { filial, selectFilial } = useTypeSelector(
 		(state: any) => state.menuStore
 	)
 	const { changeSelectFilial } = useActions()
+
 	const handleSearch = ({
 		value,
 		key,
@@ -23,7 +25,6 @@ const LeftNavBar: React.FC<ILeftNavBarProps> = ({ list }) => {
 		value: number | string
 		key: string
 	}) => {
-		console.log('value', value)
 		changeSelectFilial(Number(value))
 	}
 

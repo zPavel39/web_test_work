@@ -24,6 +24,7 @@ const CustomInput: React.FC<CustomInputProps> = ({
 		<div className={styles.customInput}>
 			{label && <label className={styles.customInput__label}>{label}</label>}
 			<input
+				maxLength={55}
 				value={value}
 				onChange={handleChange}
 				type={type}

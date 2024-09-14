@@ -1,61 +1,92 @@
 import React from 'react'
 import { useTypeSelector } from '../../hook/useTypeSelector'
 import { useActions } from '../../hook/useAction'
+import ArrowLeft from '../../assets/arrow-left.svg'
+import ArrowRight from '../../assets/arrow-right.svg'
+import styles from './pagination.module.scss'
 
 const Pagination: React.FC = () => {
 	const { paginationSettings } = useTypeSelector(state => state.menuStore)
 	const { changePaginationSettings } = useActions()
-	const pageNumbers = []
 
-	// генерируем номера страниц
-	for (let i = 1; i <= paginationSettings.total; i++) {
-		pageNumbers.push(i)
+	const { page, total } = paginationSettings
+	const range = 1
+
+	// функция смены страницы
+	const goToPage = (pageNumber: number) => {
+		if (pageNumber >= 1 && pageNumber <= total) {
+			changePaginationSettings({
+				value: pageNumber,
+				key: 'page',
+			})
+		}
 	}
 
+	// функция генерации номеров страниц
+	const getPageNumbers = () => {
+		let pages = []
+
+		pages.push(1)
+
+		if (page > range + 2) {
+			pages.push('...')
+		}
+
+		for (
+			let i = Math.max(2, page - range);
+			i <= Math.min(total - 1, page + range);
+			i++
+		) {
+			pages.push(i)
+		}
+
+		if (page < total - range - 1) {
+			pages.push('...')
+		}
+
+		if (total > 1) {
+			pages.push(total)
+		}
+
+		return pages
+	}
+
+	const pageNumbers = getPageNumbers()
+
 	return (
-		<div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
+		<div className={styles.pagination}>
 			<button
-				onClick={() =>
-					changePaginationSettings({
-						value: paginationSettings.page - 1,
-						key: 'page',
-					})
-				}
-				disabled={paginationSettings.page === 1}
+				className={styles.pagination__btnImg}
+				onClick={() => goToPage(page - 1)}
+				disabled={page === 1}
 			>
-				Previous
+				<img src={ArrowLeft} alt='<' />
 			</button>
 
-			{pageNumbers.map(number => (
-				<button
-					key={number}
-					onClick={() =>
-						changePaginationSettings({
-							value: number,
-							key: 'page',
-						})
-					}
-					style={{
-						fontWeight: number === paginationSettings.page ? 'bold' : 'normal',
-						backgroundColor:
-							number === paginationSettings.page ? '#d3d3d3' : 'white',
-						padding: '5px 10px',
-					}}
-				>
-					{number}
-				</button>
-			))}
+			{pageNumbers.map((number, index) =>
+				typeof number === 'number' ? (
+					<button
+						className={`${styles.pagination__btn} ${
+							number === page ? styles.pagination__btnActive : ''
+						}`}
+						key={index}
+						onClick={() => goToPage(number)}
+					>
+						{number}
+					</button>
+				) : (
+					<span key={index} className={styles.pagination__dots}>
+						{number}
+					</span>
+				)
+			)}
 
 			<button
-				onClick={() =>
-					changePaginationSettings({
-						value: paginationSettings.page + 1,
-						key: 'page',
-					})
-				}
-				disabled={paginationSettings.page === paginationSettings.total}
+				className={styles.pagination__btnImg}
+				onClick={() => goToPage(page + 1)}
+				disabled={page === total}
 			>
-				Next
+				<img src={ArrowRight} alt='>' />
 			</button>
 		</div>
 	)

@@ -79,18 +79,17 @@ table {
 	text-indent: initial;
 	border-spacing: 0;
 }
-/* &::-webkit-scrollbar {
+::-webkit-scrollbar {
 	width: 5px;
-	height: 7px;
+	height: 4px;
 }
 
-&::-webkit-scrollbar-track {
-	-webkit-box-shadow: 5px 5px 5px -5px rgba(34, 60, 80, 0.2) inset;
-	background-color: #0505e2;
-	border-radius: 10px;
+::-webkit-scrollbar-track {
+	background-color: #072659b2;
+	border-radius: 1px;
 }
 
-&::-webkit-scrollbar-thumb {
-	border-radius: 10px;
-	background: #73729f;
-} */
+::-webkit-scrollbar-thumb {
+	border-radius: 2px;
+	background: #072659;
+}

@@ -16,7 +16,6 @@ const TableMenuHeader: React.FC = () => {
 		changeFilterForm({ value: value, key: key as keyof iGetMenuParams })
 	}
 
-	console.log('filterForm', filterForm)
 	return (
 		<thead>
 			<tr className={styles.tableMenuHeader}>

@@ -6,6 +6,7 @@ export interface iGetMenuParams {
 	tt?: string
 	active?: 'active' | 'no_active' | 'all'
 }
+
 export interface iRoot {
 	max_pages: number
 	data: iItemMenu[]
@@ -30,7 +31,6 @@ export interface iPoint {
 	name: string
 }
 
-// колонки таблицы меню
 export interface IMenuColumnHeader {
 	id: number
 	name: string
@@ -46,6 +46,5 @@ export interface iOptionsActive {
 }
 export interface iPaginationSettings {
 	page: number
-	limit: number
 	total: number
 }
